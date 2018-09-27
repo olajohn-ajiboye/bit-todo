@@ -6,8 +6,8 @@
       <input class="text-field-edit" placeholder="Enter new value" v-model="todo.text" type="text"  @keyup.enter="updateTodo()"/> </span>
       <span class='timeago' :created="todo.createdAt" >- {{timeAgo }}</span>  &nbsp;
       <span><button title="Delete Todo" class="delete-button"  @click="removeTodo()">  x</button></span>&nbsp;
-      <span v-if="!todo.editing"><button title="Edit Todo" class="delete-button edit-button"  @click="todo.editing = true">  Edit </button></span>&nbsp;
-      <span  v-if="todo.editing"><button title="Done Editing" class="delete-button edit-button"  @click="updateTodo()">  Done </button></span>&nbsp;
+      <span v-if="!todo.editing"><button title="Edit Todo" class="delete-button edit-button js-edit-button"  @click="todo.editing = true">  Edit </button></span>&nbsp;
+      <span  v-if="todo.editing"><button title="Done Editing" class="delete-button edit-button js-done-button"  @click="updateTodo()">  Done </button></span>&nbsp;
   </div>
 </template>
 
@@ -56,9 +56,9 @@ export default {
       width: 55%;
     }
     .timeago {
-        opacity .5
-        font-size .8em
-        font-weight 200
+       opacity .5
+       font-size .8em
+       font-weight 200
        padding 1em
     }
     .delete-button
