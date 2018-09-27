@@ -30,6 +30,13 @@ Can you avert this crysis and save the day once again?
 
 
 ### Project setup
+
+#### Change directory into bit-todo
+```
+cd bit-todo
+```
+#### Install dependecies
+
 ```
 yarn install
 ```

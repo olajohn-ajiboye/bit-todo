@@ -1,7 +1,7 @@
 <template>
   <div class="todo-todo">
-    <input type='checkbox' v-model="todo.checked" >
-      <span v-if="!todo.editing" > {{ todo.text }}</span>
+    <input type='checkbox' v-model="todo.checked"  >
+      <span v-if="!todo.editing" :class="{ complete : todo.checked }"> {{ todo.text }}</span>
       <span v-else>
       <input class="text-field-edit" placeholder="Enter new value" v-model="todo.text" type="text"  @keyup.enter="updateTodo()"/> </span>
       <span class='timeago' :created="todo.createdAt" >- {{timeAgo }}</span>  &nbsp;
@@ -23,8 +23,6 @@ export default {
   },
   data: function () {
     return {
-      edit: false,
-      text: ' ',
       timeAgo: null
     }
   },
@@ -52,15 +50,20 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-    .text-field-edit{
-      width: 55%;
-    }
-    .timeago {
+    .text-field-edit
+      width 55%
+      height 2em
+      line-height 2em
+      padding-left .5em
+      border 1px  green
+      border-radius 2px
+
+    .timeago
        opacity .5
        font-size .8em
        font-weight 200
        padding 1em
-    }
+
     .delete-button
       color: red
       font-weight 900
@@ -74,8 +77,10 @@ export default {
     .edit-button
       color: green
     .todo-todo
-      box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+      box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25)
       padding: .6rem
       margin: .6rem
+    .complete
+      text-decoration: line-through;
 
 </style>

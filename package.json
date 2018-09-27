@@ -21,10 +21,10 @@
     "@vue/cli-service": "^3.0.0-rc.10",
     "@vue/eslint-config-standard": "^3.0.0-rc.10",
     "@vue/test-utils": "^1.0.0-beta.20",
+    "jest-vue-preprocessor": "1.4.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vue-template-compiler": "^2.5.16",
-    "jest-vue-preprocessor": "1.4.0"
+    "vue-template-compiler": "^2.5.16"
   },
   "eslintConfig": {
     "root": true,
