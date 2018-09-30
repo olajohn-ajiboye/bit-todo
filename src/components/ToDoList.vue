@@ -2,7 +2,7 @@
   <div class="todo-list">
       <to-do-input class='input'></to-do-input>
       <div class='todo-items'>
-           <to-do-item v-for="todo in orderedTodo " :key="todo.createdAt.getTime()" :todo="todo"></to-do-item>
+           <to-do-item v-for="todo in orderedTodo " :key="todo.createdAt" :todo="todo"></to-do-item>
       </div>
   </div>
 </template>
@@ -10,23 +10,14 @@
 <script>
 import ToDoInput from './ToDoInput'
 import ToDoItem from './ToDoItem'
+import { mapGetters } from 'vuex'
 export default {
   name: 'ToDoList',
   props: {
     todo: 'todo'
   },
   components: {ToDoInput, ToDoItem},
-  computed: {
-    orderedTodo: function () {
-      const todos = this.$store.state.todos
-      // sort by created time after sorting by checked/unchecked todo
-      let checkedTodo = todos.filter(todo => todo.checked)
-      checkedTodo = checkedTodo.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-      let UncheckedTodo = todos.filter(todo => !todo.checked)
-      UncheckedTodo = UncheckedTodo.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-      return UncheckedTodo.concat(checkedTodo)
-    }
-  }
+  computed: mapGetters(['orderedTodo'])
 
 }
 </script>
