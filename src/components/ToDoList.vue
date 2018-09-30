@@ -2,7 +2,7 @@
   <div class="todo-list">
       <to-do-input class='input'></to-do-input>
       <div class='todo-items'>
-           <to-do-item v-for="todo in orderedTodo " :key="todo.createdAt" :todo="todo"></to-do-item>
+           <to-do-item v-for="todo in orderedTodo " :key="todo.createdAt.getTime()" :todo="todo"></to-do-item>
       </div>
   </div>
 </template>
