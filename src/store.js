@@ -1,12 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import iziToast from 'izitoast'
+import VuexPersist from 'vuex-persist'
 
 Vue.use(Vuex)
+const vuexPersist = new VuexPersist({
+  key: 'store',
+  storage: localStorage
+})
 
 export const mutations = {
   addTodo: (state, payload) => {
     state.todos.unshift(payload)
+
     iziToast.success({
       message: 'Note added Successfully!',
       position: 'topRight',
@@ -26,13 +32,26 @@ export const mutations = {
     todos.splice(index, 1)
     iziToast.success({
       position: 'topRight',
-      message: 'Note removed Successfully!',
+      message: 'Note deleted forever!',
       timeout: 1500,
       messageColor: 'red'
     })
   }
 }
 
+export const getters = {
+  orderedTodo: (state) => {
+    const todos = state.todos
+
+    // sort by created time after sorting by checked/unchecked todo
+    let checkedTodo = todos.filter(todo => todo.checked)
+    checkedTodo = checkedTodo.sort((a, b) => b.createdAt - a.createdAt)
+
+    let UncheckedTodo = todos.filter(todo => !todo.checked)
+    UncheckedTodo = UncheckedTodo.sort((a, b) => b.createdAt - a.createdAt)
+    return UncheckedTodo.concat(checkedTodo)
+  }
+}
 export const actions = {
   addTodo: ({commit}, payload) => {
     commit('addTodo', payload)
@@ -65,5 +84,7 @@ export const defaultState = {
 export default new Vuex.Store({
   state: defaultState,
   mutations,
-  actions
+  actions,
+  getters,
+  plugins: [vuexPersist.plugin]
 })
