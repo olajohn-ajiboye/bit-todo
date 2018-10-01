@@ -27,7 +27,6 @@ export default {
       return UncheckedTodo.concat(checkedTodo)
     }
   }
-
 }
 </script>
 

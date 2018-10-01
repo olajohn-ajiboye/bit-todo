@@ -19,7 +19,7 @@ export default {
     todo: {
       required: true
     },
-    created: ['todo.createdAt']
+    created: ['todo']
   },
   data: function () {
     return {
