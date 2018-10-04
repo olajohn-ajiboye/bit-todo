@@ -20,10 +20,9 @@ export default {
     orderedTodo: function () {
       const todos = this.$store.state.todos
       // sort by created time after sorting by checked/unchecked todo
-      let checkedTodo = todos.filter(todo => todo.checked)
-      checkedTodo = checkedTodo.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-      let UncheckedTodo = todos.filter(todo => !todo.checked)
-      UncheckedTodo = UncheckedTodo.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+      let checkedTodo = todos.filter(todo => todo.checked).sort((a, b) => b.createdAt - a.createdAt)
+      let UncheckedTodo = todos.filter(todo => !todo.checked).sort((a, b) => b.createdAt - a.createdAt)
+
       return UncheckedTodo.concat(checkedTodo)
     }
   }

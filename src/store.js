@@ -34,31 +34,36 @@ export const mutations = {
 }
 
 export const actions = {
-  addTodo: ({commit}, payload) => {
+  addTodo: ({
+    commit
+  }, payload) => {
     commit('addTodo', payload)
   },
-  updateTodo: ({commit}, payload) => {
+  updateTodo: ({
+    commit
+  }, payload) => {
     commit('updateTodo', payload)
   },
-  removeTodo: ({commit}, payload) => {
+  removeTodo: ({
+    commit
+  }, payload) => {
     commit('removeTodo', payload)
   }
 }
 
 export const defaultState = {
-  todos: [
-    {
-      text: 'Think real hard about whats for lunch',
-      checked: false,
-      createdAt: new Date(Date.now() - 3600),
-      editing: false
-    },
-    {
-      text: 'Buy some Pantos and start looking for Lambos',
-      checked: false,
-      createdAt: new Date(Date.now() - 7200),
-      editing: false
-    }
+  todos: [{
+    text: 'Think real hard about whats for lunch',
+    checked: false,
+    createdAt: new Date(Date.now() - 3600),
+    editing: false
+  },
+  {
+    text: 'Buy some Pantos and start looking for Lambos',
+    checked: false,
+    createdAt: new Date(Date.now() - 7200),
+    editing: false
+  }
   ]
 }
 
